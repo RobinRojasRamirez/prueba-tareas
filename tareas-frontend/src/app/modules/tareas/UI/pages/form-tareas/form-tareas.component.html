@@ -1,0 +1,116 @@
+<p-dialog
+  (onHide)="hideModal()"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '30vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div *ngIf="loading" class="flex justify-content-center align-items-center">
+    <p-progressSpinner  ariaLabel="Loading"></p-progressSpinner>
+  </div>
+  <ng-template pTemplate="header">
+    <h4 class="m-0">{{ title }}</h4>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div class="grid" *ngIf="!loading">
+      <div class="col-12">
+        <hr class="m-0" />
+      </div>
+
+      <div *ngIf="isLoading" class="flex justify-content-center align-items-center">
+        <p-progressSpinner ariaLabel="isLoading"></p-progressSpinner>
+      </div>
+
+      <!-- Form -->
+      <form
+        name="frmTareas"
+        id="frmTareas"
+        class="col-12 sm:col-12 md:col-12 lg:col-12"
+        [formGroup]="frmTareas"
+        (ngSubmit)="onSubmit()"
+      >
+      <ng-container *ngIf="!isLoading">
+        <div class="col-12 sm:col-12 md:col-12 lg:col-12">
+          <div class="formgrid grid m-0">
+
+            <div class="grid col-12 sm:col-12 md:col-12 lg:col-12">
+                <div class="col-12 sm:col-12 md:col-12 lg:col-12 p-0">
+                  <div class="field form-group grid align-items-center">
+                    <label for="titulo" class="col-12 sm:col-12 md:col-12 lg:col-12">Titulo</label>
+                    <div class="col-12 sm:col-12 md:col-12 lg:col-112">
+                      <input 
+                        pInputText 
+                        id="titulo" 
+                        class="w-full"
+                        formControlName="titulo"/>
+                      <small *ngIf="frmTareas.get('titulo')?.invalid && frmTareas.get('titulo')?.touched" class="p-error">
+                        Titulo es requerido.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid col-12 md:col-12">
+                <div class="col-12 sm:col-12 md:col-12 lg:col-12 p-0">
+                  <div class="field form-group grid align-items-center">
+                    <label for="descripcion" class="col-12 sm:col-12 md:col-12 lg:col-12">Descripción</label>
+                    <div class="col-12 sm:col-12 md:col-12 lg:col-112">
+                      <input 
+                      pInputText 
+                      id="descripcion" 
+                      class="w-full"
+                      formControlName="descripcion"/>
+                      <small *ngIf="frmTareas.get('descripcion')?.invalid && frmTareas.get('descripcion')?.touched" class="p-error">
+                        Descripción es requerido.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid col-12 md:col-12">
+                <label for="estado" class="col-12 sm:col-12 md:col-12 lg:col-12">Estado</label>
+                <div class="col-12 sm:col-12 md:col-12 lg:col-12 p-0 mt-2">
+                  <p-selectbutton [options]="stateOptions" formControlName="estado" optionLabel="label" optionValue="value" aria-labelledby="basic" />
+                </div>
+              </div>
+              
+          </div>
+        </div>
+      </ng-container>
+        <!-- Botonera -->
+        <div class="grid col-12 sm:col-12 md:col-12 lg:col-12 p-0 mt-1 justify-content-end">
+          <div class="col-12 sm:col-12 md:col-4 lg:col-4">
+            <button
+              styleClass="button-cancel"
+              pButton
+              class="p-button-rounded w-full p-button-danger p-button-outlined p-mb-3"
+              type="button"
+              (click)="hideModal()"
+              icon="pi pi-replay"
+              label="Cancelar"
+            ></button>
+          </div>
+          <div class="col-12 sm:col-12 md:col-4 lg:col-4">
+            <button
+              styleClass="button-save"
+              pButton
+              [disabled]="loading"
+              class="p-button-rounded w-full p-button-success p-button-outlined p-mb-3"
+              type="submit"
+              icon="pi pi-save"
+              label="Guardar"
+            ></button>
+          </div>
+        </div>
+        <!-- END Botonera -->
+      </form>
+      <!-- END Form -->
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer"> </ng-template>
+</p-dialog>
+
+

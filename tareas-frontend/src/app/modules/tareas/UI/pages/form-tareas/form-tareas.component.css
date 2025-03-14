@@ -1,0 +1,7 @@
+@media (max-width: 768px) {
+    ::ng-deep .p-dialog {
+      /* Hace que el modal ocupe casi toda la pantalla */
+      width: 95vw !important;
+      max-width: 95vw !important;
+    }
+}
