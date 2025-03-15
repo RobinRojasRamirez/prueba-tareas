@@ -11,8 +11,8 @@ export const databaseConfig: DataSourceOptions = {
   password: process.env.DB_PASS || 'postgres',
   database: process.env.DB_NAME || 'db',
   entities: [__dirname + '/../../models/entities/**/*.entity{.ts,.js}'],
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false, 
   synchronize: process.env.NODE_ENV !== 'production',
   logging: false, 
 }
-
 export const AppDataSource = new DataSource(databaseConfig) 
