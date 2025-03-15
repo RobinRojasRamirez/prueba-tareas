@@ -61,5 +61,4 @@ export class Tarea {
     name: 'fecha_eliminacion',
   })
   deletedAt: Date;
-
 }
