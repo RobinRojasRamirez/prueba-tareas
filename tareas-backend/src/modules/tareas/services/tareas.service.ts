@@ -31,7 +31,7 @@ export class TareasService {
     return await this._tareasRepository.updateTarea(id, data);
   }
 
-  async listConnectionsPagable(
+  async listTareasPagable(
     pagableConnectionDto: PagableTareasDto<null>
   ): Promise<{ content: Tarea[]; totalElements: number }> {
     return await this._tareasRepository.listTareasPagable(

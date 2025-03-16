@@ -73,7 +73,7 @@ export class TareasController {
   async listaTareasPagable(@Body() dto: PagableTareasDto<null>) {
     try {
       const tareas =
-        await this._tareasService.listConnectionsPagable(dto)
+        await this._tareasService.listTareasPagable(dto)
       return {
         status: true,
         statusCode: HttpStatus.OK,

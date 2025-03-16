@@ -104,6 +104,6 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 - El backend se desarrollo en Nestjs ya que es de un excelente manejo e implementacion - excelentes procesos 
 
 - Crear base de datos en el .env esta la configuración (DB_NAME) ya cuando realice el npm run start:dev se crea la tabla mediante la entidad en los modulos
-- Correr local: npm run start:dev
+- Correr Backend: npm run start:dev
 
 
